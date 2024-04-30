@@ -4,7 +4,7 @@ const mongoose = require("mongoose");
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const path = require("path");
+
 
 
 mongoose.connect(config.connectionString);
@@ -26,12 +26,10 @@ app.use('/', noteRouter);
 
 
 
-// Serve static files from the dist directory
-app.use(express.static(path.join(__dirname, "Frontend", "notes-app", "dist")));
 
-// Route for handling all other requests
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "Frontend", "notes-app", "dist", "index.html"));
+
+app.get("/", (req, res) => {
+    res.send({ data: "Hello !" });
 });
 
 
