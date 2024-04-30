@@ -27,10 +27,9 @@ app.use('/', noteRouter);
 
 
 
-
-app.get("/", (req, res) => {
-    res.send({ data: "Hello !" });
-});
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "Frontend", "notes-app", "dist", "index.html"));
+  });
 
 
 app.listen(4000);
