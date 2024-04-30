@@ -26,10 +26,13 @@ app.use('/', noteRouter);
 
 
 
+// Serve static files from the dist directory
+app.use(express.static(path.join(__dirname, "Frontend", "notes-app", "dist")));
 
+// Route for handling all other requests
 app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "Frontend", "notes-app", "dist", "index.html"));
-  });
+  res.sendFile(path.join(__dirname, "Frontend", "notes-app", "dist", "index.html"));
+});
 
 
 app.listen(4000);
